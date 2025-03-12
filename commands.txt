@@ -1,0 +1,35 @@
+# 1️⃣ Create & activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate     # Windows
+
+# 2️⃣ Install required dependencies
+pip install -r requirements.txt
+
+# 3️⃣ Run the Python script
+python word_association.py
+
+# 4️⃣ Test the text-to-speech script separately
+python my_tts_script.py
+
+# 5️⃣ Check installed packages
+pip list
+
+# 6️⃣ Uninstall & reinstall a package (example: pyttsx3)
+pip uninstall pyttsx3
+pip install pyttsx3
+
+# 7️⃣ Check Python version and which Python is used
+python3 --version
+which python3
+
+# 8️⃣ Deactivate the virtual environment
+deactivate
+
+# 9 Git
+                   
+
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/owenplanchart/wordAssociationBells.git
+git push -u origin main
