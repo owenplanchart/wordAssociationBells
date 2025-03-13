@@ -1,3 +1,5 @@
+# this script lets you hear the voices
+
 import pyttsx3
 
 def list_and_test_voices():
