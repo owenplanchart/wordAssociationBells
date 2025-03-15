@@ -3,6 +3,13 @@ import pyttsx3
 import speech_recognition as sr
 from pynput import keyboard  # For cross-platform key detection
 
+# Initialize TTS engine once globally
+engine = pyttsx3.init()
+engine.setProperty('rate', 130)  # Faster speech rate
+voices = engine.getProperty('voices')
+if voices:
+    engine.setProperty('voice', voices[2].id)  # Use first available voice
+
 # Function to fetch word associations from Datamuse API
 def get_associated_words(word, max_words=10):
     """Fetch word associations using Datamuse API."""
@@ -17,25 +24,12 @@ def get_associated_words(word, max_words=10):
         print("Error: Could not fetch data.")
         return []
 
-# Function to speak a list of words aloud
+# Function to speak words (unchanged except for removed engine initialization)
 def speak_words(words):
     """Speak a list of words aloud."""
     try:
-        print("Initializing speech engine...")
-        engine = pyttsx3.init()
-        
-        # Ensure voices are available
-        voices = engine.getProperty('voices')
-        if not voices:
-            print("No voices found. Check your TTS engine installation.")
-            return
-        
-        engine.setProperty('rate', 260)  # Double the speech rate (default ~130)
-        engine.setProperty('voice', voices[0].id)  # Select the first available voice
-        
         for word in words:
             engine.say(word)
-        
         engine.runAndWait()
     except Exception as e:
         print(f"Speech engine error: {e}")
